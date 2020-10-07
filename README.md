@@ -53,6 +53,6 @@ travis encrypt MYCERT_SALT=sgDEQWHyK5owYW1m --add
 3. Add the following to `.travis.yml`:
 ```
 before_deploy:
-  - git clone https://github.com/almamedia/aws-crypto-tunkki.git
-  - ./aws-crypto-tunkki/bin/linux/crypto decrypt ./secrets/something.cert.encrypted $MYCERT_PASSWORD $MYCERT_SALT
+  - wget https://github.com/almamedia/aws-crypto-tunkki/releases/download/v1.0/crypto-linux
+  - ./crypto-linux decrypt ./secrets/something.cert.encrypted $MYCERT_PASSWORD $MYCERT_SALT
 ```
