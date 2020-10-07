@@ -6,9 +6,15 @@ It can be used locally (to encrypt) as well as run on CI machines such as Travis
 *Note: This tool is released as MIT licensed open source software.*
 
 
+### How to get
+```
+user@localhost:~$ wget https://github.com/almamedia/aws-crypto-tunkki/releases/download/v1.0/crypto-linux
+user@localhost:~$ chmod u+x crypto-linux
+```
+
 ### How to use
 ```
-user@localhost:~$ crypto encrypt myfile.txt mysecretpassword
+user@localhost:~$ ./crypto-linux encrypt myfile.txt mysecretpassword
 File encryption complete.
 
 IMPORTANT! Salt: sgDEQWHyK5owYW1m
@@ -19,7 +25,7 @@ user@localhost:~$ ls -l
 -rw-rw-r-- 1 user user 1101 Oct  7 15:53 myfile.txt
 -rw-rw-r-- 1 user user 1101 Oct  7 15:53 myfile.txt.encrypted
 
-user@localhost:~$ crypto decrypt myfile.txt.encrypted mysecretpassword sgDEQWHyK5owYW1m
+user@localhost:~$ ./crypto-linux decrypt myfile.txt.encrypted mysecretpassword sgDEQWHyK5owYW1m
 File decryption complete.
 ```
 
@@ -36,7 +42,7 @@ right before deploying your application.
 
 1. Encrypt file(s):
 ```
-user@localhost:~$ crypto encrypt ./secrets/something.cert mysecretpassword
+user@localhost:~$ crypto-linux encrypt ./secrets/something.cert mysecretpassword
 File encryption complete.
 
 IMPORTANT! Salt: sgDEQWHyK5owYW1m

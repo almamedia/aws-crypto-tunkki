@@ -18,30 +18,30 @@ import (
 // which is also easy to write down does not have to be escaped.
 func generateSalt(saltLength int) string {
 	saltChars := []byte{}
-  for len(saltChars) < saltLength {
-    candidateBytes := make([]byte, 128)
-    _, randErr := rand.Read(candidateBytes)
-    if randErr != nil {
-      log.Panicf("Error generating salt. %v", randErr.Error())
-    }
-    for _, byteCanditate := range candidateBytes {
-      if len(saltChars) < saltLength {
-        // Numbers
-        if byteCanditate > 48 && byteCanditate < 57 {
-          saltChars = append(saltChars, byteCanditate)
-        }
-        // Capital letter
-        if byteCanditate > 65 && byteCanditate < 90 {
-          saltChars = append(saltChars, byteCanditate)
-        }
-        // Letters
-        if byteCanditate > 97 && byteCanditate < 122 {
-          saltChars = append(saltChars, byteCanditate)
-        }
-      }
-    }
-  }
-  return string(saltChars)
+	for len(saltChars) < saltLength {
+		candidateBytes := make([]byte, 128)
+		_, randErr := rand.Read(candidateBytes)
+		if randErr != nil {
+			log.Panicf("Error generating salt. %v", randErr.Error())
+		}
+		for _, byteCanditate := range candidateBytes {
+			if len(saltChars) < saltLength {
+				// Numbers
+				if byteCanditate > 48 && byteCanditate < 57 {
+					saltChars = append(saltChars, byteCanditate)
+				}
+				// Capital letter
+				if byteCanditate > 65 && byteCanditate < 90 {
+					saltChars = append(saltChars, byteCanditate)
+				}
+				// Letters
+				if byteCanditate > 97 && byteCanditate < 122 {
+					saltChars = append(saltChars, byteCanditate)
+				}
+			}
+		}
+	}
+	return string(saltChars)
 }
 
 func encrypt(filePath string, secretKey string) string {
@@ -113,7 +113,7 @@ func decrypt(filePath string, secretKey string, salt string) {
 
 	// Remove .encrypted and save decrypted file
 	if filePath[len(filePath)-10:len(filePath)] == ".encrypted" {
-    filePath = filePath[0:len(filePath)-10]
+		filePath = filePath[0:len(filePath)-10]
 	}
 	ioutil.WriteFile(filePath, encryptedFileContent, 0644)
 }
