@@ -54,5 +54,6 @@ travis encrypt MYCERT_SALT=sgDEQWHyK5owYW1m --add
 ```
 before_deploy:
   - wget https://github.com/almamedia/aws-crypto-tunkki/releases/download/v1.0/crypto-linux
+  - chmod u+x crypto-linux
   - ./crypto-linux decrypt ./secrets/something.cert.encrypted $MYCERT_PASSWORD $MYCERT_SALT
 ```
